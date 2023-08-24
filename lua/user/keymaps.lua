@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
+-- local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -73,3 +73,13 @@ keymap("v", "<leader>/", ":lua require(\"Comment.api\").gc(vim.fn.visualmode())<
 
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+
+-- Gitsign
+keymap("n", "gj", ":Gitsigns next_hunk<CR>", opts)
+keymap("n", "gk", ":Gitsigns prev_hunk<CR>", opts)
+
+-- telescope
+keymap("n", "<leader>fg", ":Telescope live_grep<cr>", opts)
+keymap("n", "<leader>ff", ":Telescope find_files theme=dropdown<cr>", opts)
+
+--[[ nnoremap <leader>/ :Commentary<CR> ]]
