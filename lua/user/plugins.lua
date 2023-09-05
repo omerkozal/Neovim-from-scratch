@@ -98,6 +98,11 @@ return packer.startup(function(use)
 
   use "folke/trouble.nvim"
 
+  --Additional
+  use("petertriho/nvim-scrollbar")
+  -- use("lewis6991/satellite.nvim")
+  -- use("dstein64/nvim-scrollview")
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
