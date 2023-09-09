@@ -60,6 +60,7 @@ return packer.startup(function(use)
   -- use { "lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83" }
   use "lunarvim/darkplus.nvim"
   use "ellisonleao/gruvbox.nvim"
+  use "askfiy/visual_studio_code"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp"         -- The completion plugin
@@ -100,8 +101,9 @@ return packer.startup(function(use)
 
   --Additional
   use("petertriho/nvim-scrollbar")
-  -- use("lewis6991/satellite.nvim")
-  -- use("dstein64/nvim-scrollview")
+  -- use ("utilyre/barbecue.nvim")
+  -- use ("nvim-pack/nvim-spectre")
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
