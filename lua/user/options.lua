@@ -34,6 +34,8 @@ local options = {
   scrolloff = 8,                           -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 8,                       -- minimal number of screen columns either side of cursor if wrap is `false`
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
+  -- guicursor="i:block",
+  guicursor="i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor", --blink cursor in insert mode
   whichwrap = "bs<>[]hl",                  -- which "horizontal" keys are allowed to travel to prev/next line
 }
 

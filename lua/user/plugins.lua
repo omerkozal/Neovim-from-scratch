@@ -99,10 +99,13 @@ return packer.startup(function(use)
 
   use "folke/trouble.nvim"
 
-  --Additional
+  -- Additional
   use("petertriho/nvim-scrollbar")
   -- use ("utilyre/barbecue.nvim")
   -- use ("nvim-pack/nvim-spectre")
+
+  -- Markdown
+  use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
 
 
   -- Automatically set up your configuration after cloning packer.nvim
