@@ -55,10 +55,9 @@ return packer.startup(function(use)
   use "akinsho/toggleterm.nvim"
 
   -- Colorschemes
-  -- use { "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" }
-  use "folke/tokyonight.nvim"
-  -- use { "lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83" }
+  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
+  use "folke/tokyonight.nvim"
   use "ellisonleao/gruvbox.nvim"
   use "askfiy/visual_studio_code"
 
@@ -78,10 +77,10 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  use "williamboman/mason.nvim"
+  use "williamboman/mason.nvim"           -- simple to use language server installer
   use "williamboman/mason-lspconfig.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim"   -- for formatters and linters
-  use "RRethy/vim-illuminate"
+  use "RRethy/vim-illuminate"             -- highlight other uses of the word
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -94,19 +93,69 @@ return packer.startup(function(use)
   -- }
   -- use "JoosepAlviste/nvim-ts-context-commentstring"
 
+  -- Markdown
+  use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
+
   -- Git
   use "lewis6991/gitsigns.nvim"
 
   use "folke/trouble.nvim"
 
   -- Additional
-  use("petertriho/nvim-scrollbar")
-  -- use ("utilyre/barbecue.nvim")
+  use "petertriho/nvim-scrollbar"
+  use({
+    "utilyre/barbecue.nvim",
+    tag = "*",
+    requires = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    after = "nvim-web-devicons", -- keep this if you're using NvChad
+    config = function()
+      require("barbecue").setup()
+    end,
+  })
   -- use ("nvim-pack/nvim-spectre")
+  -- use{
+  --       'windwp/nvim-spectre',
+  --       dependencies = {
+  --           'nvim-lua/plenary.nvim'
+  --       },
+  --       keys = {
+  --           { '<Leader>sr', '<cmd>lua require("spectre").open()<CR>' },
+  --           { '<Leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>' },
+  --           { '<Leader>sp', '<cmd>lua require("spectre").open_file_search()<CR>' },
+  --       },
+  --       config = true,
+  --   }
+  use {"nvim-pack/nvim-spectre", config = function() require("spectre").setup() end}
 
-  -- Markdown
-  use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+      }
+    end
+  }
 
+  use({
+    "stevearc/aerial.nvim",
+    config = function()
+      require("aerial").setup({
+        layout = {
+          min_width = 20,
+          default_direction = "prefer_right",
+        }
+      })
+    end,
+  })
+
+  -- https://github.com/rcarriga/nvim-notify
+  -- https://github.com/tzachar/cmp-tabnine/
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
