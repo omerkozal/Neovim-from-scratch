@@ -13,4 +13,3 @@ require("scrollbar.handlers.gitsigns").setup()
 --         Misc = { color = colors.purple },
 --     }
 -- })
-
