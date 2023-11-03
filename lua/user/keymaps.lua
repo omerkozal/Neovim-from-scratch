@@ -83,3 +83,14 @@ keymap("n", "<leader>fg", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files theme=dropdown<cr>", opts)
 
 --[[ nnoremap <leader>/ :Commentary<CR> ]]
+
+keymap('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
+    desc = "Toggle Spectre" })
+keymap('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word" })
+keymap('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    desc = "Search current word" })
+keymap('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = "Search on current file" })
+
+keymap("n", "<leader>a", "<cmd>AerialToggle!<CR>", opts)
