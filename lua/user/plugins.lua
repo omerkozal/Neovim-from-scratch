@@ -41,69 +41,76 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
     -- My plugins here
-    use "wbthomason/packer.nvim" -- Have packer manage itself
-    use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
-    use "nvim-lua/plenary.nvim"  -- Useful lua functions used by lots of plugins
-    use "windwp/nvim-autopairs"  -- Autopairs, integrates with both cmp and treesitter
-    use "numToStr/Comment.nvim"  -- Easily comment stuff
-    use "kyazdani42/nvim-web-devicons"
-    use "kyazdani42/nvim-tree.lua"
-    use "lukas-reineke/indent-blankline.nvim"
-    use "akinsho/bufferline.nvim"
-    use "moll/vim-bbye"
-    use "nvim-lualine/lualine.nvim"
-    use "akinsho/toggleterm.nvim"
+    use("wbthomason/packer.nvim") -- Have packer manage itself
+    use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
+    use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
+    use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+    use("numToStr/Comment.nvim") -- Easily comment stuff
+    use("kyazdani42/nvim-web-devicons")
+    use("kyazdani42/nvim-tree.lua")
+    use("lukas-reineke/indent-blankline.nvim")
+    use("akinsho/bufferline.nvim")
+    use("moll/vim-bbye")
+    use("nvim-lualine/lualine.nvim")
+    use("akinsho/toggleterm.nvim")
 
     -- Colorschemes
     -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-    use "lunarvim/darkplus.nvim"
-    use "folke/tokyonight.nvim"
-    use "ellisonleao/gruvbox.nvim"
-    use "askfiy/visual_studio_code"
+    use("lunarvim/darkplus.nvim")
+    use("folke/tokyonight.nvim")
+    use("ellisonleao/gruvbox.nvim")
+    use("askfiy/visual_studio_code")
 
     -- cmp plugins
-    use "hrsh7th/nvim-cmp"         -- The completion plugin
-    use "hrsh7th/cmp-buffer"       -- buffer completions
-    use "hrsh7th/cmp-path"         -- path completions
-    use "hrsh7th/cmp-cmdline"      -- cmdline completions
-    use "saadparwaiz1/cmp_luasnip" -- snippet completions
-    use "hrsh7th/cmp-nvim-lsp"
+    use("hrsh7th/nvim-cmp") -- The completion plugin
+    use("hrsh7th/cmp-buffer") -- buffer completions
+    use("hrsh7th/cmp-path") -- path completions
+    use("hrsh7th/cmp-cmdline") -- cmdline completions
+    use("saadparwaiz1/cmp_luasnip") -- snippet completions
+    use("hrsh7th/cmp-nvim-lsp")
 
     -- snippets
-    use "L3MON4D3/LuaSnip"             --snippet engine
-    use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+    use("L3MON4D3/LuaSnip") --snippet engine
+    use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
     -- LSP
-    use "neovim/nvim-lspconfig" -- enable LSP
-    -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-    -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-    use "williamboman/mason.nvim"           -- simple to use language server installer
-    use "williamboman/mason-lspconfig.nvim" -- language server settings defined in json for
-    use "jose-elias-alvarez/null-ls.nvim"   -- for formatters and linters
-    use "RRethy/vim-illuminate"             -- highlight other uses of the word
+    use("neovim/nvim-lspconfig") -- enable LSP
+    -- use ("williamboman/nvim-lsp-installer") -- simple to use language server installer
+    -- use ("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
+    use("williamboman/mason.nvim") -- simple to use language server installer
+    use("williamboman/mason-lspconfig.nvim") -- language server settings defined in json for
+    use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+    use("RRethy/vim-illuminate") -- highlight other uses of the word
 
     -- Telescope
-    use "nvim-telescope/telescope.nvim"
-    use { 'nvim-telescope/telescope-fzf-native.nvim', run =
-    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+    use("nvim-telescope/telescope.nvim")
+    use({
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+    })
 
     -- Treesitter
-    -- use {
+    -- use ({
     --   "nvim-treesitter/nvim-treesitter",
     --   run = ":TSUpdate",
-    -- }
-    -- use "JoosepAlviste/nvim-ts-context-commentstring"
+    -- })
+    -- use ("JoosepAlviste/nvim-ts-context-commentstring")
 
     -- Markdown
-    use { "ellisonleao/glow.nvim", config = function() require("glow").setup() end }
+    use({
+        "ellisonleao/glow.nvim",
+        config = function()
+            require("glow").setup()
+        end,
+    })
 
     -- Git
-    use "lewis6991/gitsigns.nvim"
+    use("lewis6991/gitsigns.nvim")
 
-    use "folke/trouble.nvim"
+    use("folke/trouble.nvim")
 
     -- Additional
-    use "petertriho/nvim-scrollbar"
+    use("petertriho/nvim-scrollbar")
     use({
         "utilyre/barbecue.nvim",
         tag = "*",
@@ -111,28 +118,33 @@ return packer.startup(function(use)
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
-        after = "nvim-web-devicons",       -- keep this if you're using NvChad
+        after = "nvim-web-devicons", -- keep this if you're using NvChad
         config = function()
             require("barbecue").setup()
         end,
     })
 
-    use { "nvim-pack/nvim-spectre", config = function() require("spectre").setup() end }
+    use({
+        "nvim-pack/nvim-spectre",
+        config = function()
+            require("spectre").setup()
+        end,
+    })
 
-    use {
+    use({
         "folke/which-key.nvim",
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
-            require("which-key").setup {
+            require("which-key").setup({
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
-            }
-        end
-    }
+            })
+        end,
+    })
 
-    use "junegunn/fzf"
-    use "junegunn/fzf.vim"
+    use("junegunn/fzf")
+    use("junegunn/fzf.vim")
 
     use({
         "stevearc/aerial.nvim",
@@ -141,7 +153,7 @@ return packer.startup(function(use)
                 layout = {
                     min_width = 20,
                     default_direction = "prefer_right",
-                }
+                },
             })
         end,
     })

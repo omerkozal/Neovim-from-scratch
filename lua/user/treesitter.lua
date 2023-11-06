@@ -3,13 +3,26 @@ if not status_ok then
     return
 end
 
-configs.setup {
-    ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python", "c", "csv", "diff", "git_config",
-        "git_rebase", "gitcommit", "make", "mermaid", "vim" },                                                                                                            -- put the language you want in this array
+configs.setup({
+    ensure_installed = {
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "bash",
+        "python",
+        "c",
+        "csv",
+        "diff",
+        "git_config",
+        "git_rebase",
+        "gitcommit",
+        "make",
+        "mermaid",
+        "vim",
+    }, -- put the language you want in this array
     -- ensure_installed = "all", -- one of "all" or a list of languages
 
-
-    sync_install = false,  -- install languages synchronously (only applied to `ensure_installed`)
+    sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
     ignore_install = { "" }, -- List of parsers to ignore installing
     autopairs = {
         enable = true,
@@ -28,4 +41,4 @@ configs.setup {
         enable = true,
         enable_autocmd = false,
     },
-}
+})

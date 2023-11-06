@@ -6,7 +6,7 @@ if not status_ok then
     return
 end
 
-nvim_tree.setup {
+nvim_tree.setup({
     disable_netrw = true,
     hijack_netrw = true,
     open_on_tab = false,
@@ -97,4 +97,4 @@ nvim_tree.setup {
             },
         },
     },
-}
+})
