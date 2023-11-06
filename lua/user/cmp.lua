@@ -8,6 +8,12 @@ if not snip_status_ok then
     return
 end
 
+local tabnine_status_ok, _ = pcall(require, "user.tabnine")
+if not tabnine_status_ok then
+    return
+end
+
+local compare = require("cmp.config.compare")
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
@@ -45,6 +51,7 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+vim.api.nvim_set_hl(0, "CmpItemKindTabNine", { fg = "#CA42F0" })
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -100,6 +107,11 @@ cmp.setup({
             -- Kind icons
             vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
             -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+            if entry.source.name == "cmp_tabnine" then
+                vim_item.kind = "AI"
+                vim_item.kind_hl_group = "CmpItemKindTabnine"
+            end
+
             vim_item.menu = ({
                 nvim_lsp = "[LSP]",
                 luasnip = "[Snippet]",
@@ -113,19 +125,38 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer" },
+        { name = "cmp_tabnine" },
         { name = "path" },
+    },
+    sorting = {
+        priority_weight = 2,
+        comparators = {
+            -- require('cmp_tabnine.compare'),
+            compare.offset,
+            compare.exact,
+            compare.score,
+            compare.recently_used,
+            compare.kind,
+            compare.sort_text,
+            compare.length,
+            compare.order,
+        },
     },
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     },
     window = {
-        documentation = {
-            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        documentation = false,
+        -- documentation = {
+        -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        -- },
+        completion = {
+            border = "rounded",
+            winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
         },
     },
     experimental = {
-        ghost_text = false,
-        native_menu = false,
+        ghost_text = true,
     },
 })
