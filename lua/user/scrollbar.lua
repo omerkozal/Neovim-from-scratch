@@ -13,5 +13,5 @@ require("scrollbar").setup({
         Info = { color = colors.info },
         Hint = { color = colors.hint },
         Misc = { color = colors.purple },
-    }
+    },
 })

@@ -1,6 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-
 -- Shorten function name
 -- local keymap = vim.api.nvim_set_keymap
 local keymap = vim.keymap.set
@@ -40,7 +39,6 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
-
 
 -- Visual --
 -- Stay in indent mode
